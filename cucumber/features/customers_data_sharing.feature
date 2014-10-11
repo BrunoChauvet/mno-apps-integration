@@ -21,6 +21,9 @@ Feature: Data Sharing - Customers
     Then Connec should contain the Organization
       | Name              |
       | Test Organization |
+    And Connec should contain the Contact
+      | First name   | Last name |
+      | John         | Smith     |
 
     Given I open my SimpleInvoices application
     And I go to the Customers tab
