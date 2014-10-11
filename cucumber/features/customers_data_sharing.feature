@@ -1,4 +1,7 @@
+@organization @person @item @invoice
 Feature: Data Sharing - Customers
+  Data created in Dolibarr are pushed to SimpleInvoices
+
   Background:
     Given I have a fresh Dolibarr application
     And I have a fresh SimpleInvoices application
