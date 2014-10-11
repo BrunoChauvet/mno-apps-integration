@@ -14,7 +14,11 @@ Then /^I should see the Product "(.*?)"$/ do |product_name|
         end
       end
     end
-    raise "Product #{product_name} not found" unless product_cell
+
+    unless product_cell
+      visit current_path
+      raise "Product #{product_name} not found"
+    end
   }
 end
 

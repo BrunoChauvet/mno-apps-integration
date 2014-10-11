@@ -1,5 +1,5 @@
 Given(/^I am logged in on Maestrano$/) do
-  visit 'http://192.168.15.195:3000/auth/users/sign_in'
+  visit 'http://application.maestrano.io/auth/users/sign_in'
 
   page.first("#user_email").native.send_keys 'bruno.chauvet@maestrano.com'
   page.first("#user_password").native.send_keys 'password'

@@ -9,11 +9,9 @@ end
 
 Then /^I should see the following Invoice details$/ do |table|
   table.hashes.each do |row|
-    page.find(:xpath, "/html/body/div[6]/table[1]/tbody/tr[17]/td[2]").text.should eql(row['Customer'])
-    page.find(:xpath, "/html/body/div[6]/table[1]/tbody/tr[32]/td[3]").text.should eql(row['Net Total'])
-    page.find(:xpath, "/html/body/div[6]/table[1]/tbody/tr[33]/td[3]").text.should eql(row['Tax Total'])
-    page.find(:xpath, "/html/body/div[6]/table[1]/tbody/tr[34]/td[3]/span").text.should eql(row['Gross Total'])
-
-    
+    expect(page.find(:xpath, "/html/body/div[6]/table[1]/tbody/tr[17]/td[2]").text).to eql(row['Customer'])
+    expect(page.find(:xpath, "/html/body/div[6]/table[1]/tbody/tr[32]/td[3]").text).to eql(row['Net Total'])
+    expect(page.find(:xpath, "/html/body/div[6]/table[1]/tbody/tr[33]/td[3]").text).to eql(row['Tax Total'])
+    expect(page.find(:xpath, "/html/body/div[6]/table[1]/tbody/tr[34]/td[3]/span").text).to eql(row['Gross Total'])
   end
 end

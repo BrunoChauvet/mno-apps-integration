@@ -14,7 +14,11 @@ Then /^I should see the Customer "(.*?)"$/ do |customer_name|
         end
       end
     end
-    raise "Customer #{customer_name} not found" unless customer_cell
+    
+    unless customer_cell
+      visit current_path
+      raise "Customer #{customer_name} not found"
+    end
   }
 end
 
