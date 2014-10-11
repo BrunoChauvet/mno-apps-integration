@@ -18,6 +18,10 @@ Feature: Data Sharing - Customers
       | First name       | Last name     | 
       | John             | Smith         |
 
+    Then Connec should contain the Organization
+      | Name              |
+      | Test Organization |
+
     Given I open my SimpleInvoices application
     And I go to the Customers tab
     Then I should see the Customer "John Smith"
