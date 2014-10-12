@@ -52,6 +52,12 @@ Feature: Data Sharing - Customers
     And I go to the Products tab
     Then I should see the Product "Stone Table"
 
+    Given I open my vTiger application
+    And I go to the vTiger Products tab
+    Then I should see the following Products in vTiger
+      | Product name | Product price |
+      | Stone Table  | $1,200.00     |
+
     Given I open my Dolibarr application
     And I go to the Financial tab
     And I create a new invoice
