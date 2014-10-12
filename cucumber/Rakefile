@@ -1,5 +1,6 @@
 require 'cucumber'
 require 'cucumber/rake/task'
+require 'webmock'
 
 task default: :features
 	Cucumber::Rake::Task.new(:features) do |t|

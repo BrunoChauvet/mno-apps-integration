@@ -1,7 +1,7 @@
 module AsyncSupport
   def eventually
     timeout = 5
-    polling_interval = 0.25
+    polling_interval = 0.5
     time_limit = Time.now + timeout
     loop do
       begin 

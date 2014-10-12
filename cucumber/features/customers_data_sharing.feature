@@ -5,6 +5,7 @@ Feature: Data Sharing - Customers
   Background:
     Given I have a fresh Dolibarr application
     And I have a fresh SimpleInvoices application
+    And I have a fresh vTiger application
   
   Scenario: Create a new customer in Dolibarr
     Given I open my Dolibarr application
@@ -28,6 +29,16 @@ Feature: Data Sharing - Customers
     Given I open my SimpleInvoices application
     And I go to the Customers tab
     Then I should see the Customer "John Smith"
+
+    Given I open my vTiger application
+    And I go to the vTiger Organizations tab
+    Then I should see the following Organizations in vTiger
+      | Organization name |
+      | Test Organization |
+    When I go to the vTiger Contacts tab
+    Then I should see the following Contacts in vTiger
+      | First name | Last name | Organization name |
+      | John       | Smith     | Test Organization |
 
     Given I open my Dolibarr application
     And I go to the Products and Service tab
