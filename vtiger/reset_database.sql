@@ -1,0 +1,12 @@
+DELETE FROM mno_id_map;
+DELETE FROM vtiger_account;
+DELETE FROM vtiger_accountscf;
+DELETE FROM vtiger_contactdetails;
+DELETE FROM vtiger_contactscf;
+DELETE FROM vtiger_products;
+DELETE FROM vtiger_productcf;
+DELETE FROM vtiger_producttaxrel;
+DELETE FROM vtiger_invoice;
+DELETE FROM vtiger_invoicecf;
+DELETE FROM vtiger_inventoryproductrel;
+DELETE FROM vtiger_inventorysubproductrel;

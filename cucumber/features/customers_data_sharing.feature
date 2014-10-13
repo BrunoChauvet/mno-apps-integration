@@ -56,7 +56,7 @@ Feature: Data Sharing - Customers
     And I go to the vTiger Products tab
     Then I should see the following Products in vTiger
       | Product name | Product price |
-      | Stone Table  | $1,200.00     |
+      | Stone Table  | $1,090.91     |
 
     Given I open my Dolibarr application
     And I go to the Financial tab
