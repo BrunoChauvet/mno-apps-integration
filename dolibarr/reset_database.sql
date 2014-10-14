@@ -4,5 +4,6 @@ DELETE FROM llx_facture;
 DELETE FROM llx_socpeople;
 DELETE FROM llx_societe;
 DELETE FROM llx_product;
+DELETE FROM llx_product_price;
 DELETE FROM llx_bank;
 DELETE FROM llx_bank_account;
