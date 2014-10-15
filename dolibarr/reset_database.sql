@@ -1,4 +1,5 @@
 DELETE FROM mno_id_map;
+DELETE FROM llx_paiement_facture;
 DELETE FROM llx_facturedet;
 DELETE FROM llx_facture;
 DELETE FROM llx_socpeople;
