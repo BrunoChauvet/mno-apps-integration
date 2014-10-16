@@ -1,5 +1,5 @@
 @organization @person @item @invoice
-Feature: Data Sharing - Customers
+Feature: Data Sharing - Invoices
   Data created in Dolibarr are pushed to SimpleInvoices
 
   Background:
@@ -25,12 +25,18 @@ Feature: Data Sharing - Customers
       | PRO-001        | Stone Table   | 1200    |
 
     And I go to the Financial tab
-    And I create a new invoice
-      | Customer          |
-      | Test Organization |
+    And I create a new invoice in Dolibarr
+      | Customer          | Date       |
+      | Test Organization | 10/15/2014 |
+    And I change the Dolibarr invoice customer reference to "INV-001"
+    And I change the Dolibarr invoice due date to "10/25/2014"
     And I add a new line to the invoice
       | Product     | Quantity |
       | Stone Table | 2        |
+
+    Then Connec should contain the Invoices
+      | Number        | Date       | Due        | Status | Total amount |
+      | INV-001       | 2014-10-15 | 2014-10-25 | DRAFT  | 2400.0       |
 
     Given I open my SimpleInvoices application
     And I go to the Invoices tab

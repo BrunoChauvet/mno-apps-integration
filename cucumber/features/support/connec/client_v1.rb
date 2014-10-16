@@ -25,5 +25,12 @@ module Connec
       end
       JSON.parse(response.body)
     end
+
+    def invoices
+      response = client.get "/v1/dolibarr.app.dev.maestrano.io/invoices" do |request|
+        request.headers['MNO-TRUSTED'] = 'true'
+      end
+      JSON.parse(response.body)
+    end
   end
 end
