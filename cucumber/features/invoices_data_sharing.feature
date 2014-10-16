@@ -1,4 +1,4 @@
-@organization @person @item @invoice
+@invoice
 Feature: Data Sharing - Invoices
   Data created in Dolibarr are pushed to SimpleInvoices
 
@@ -7,7 +7,7 @@ Feature: Data Sharing - Invoices
     And I have a fresh SimpleInvoices application
     And I have a fresh vTiger application
   
-  Scenario: Create a new customer in Dolibarr
+  Scenario: Create a new invoice in Dolibarr
     Given I open my Dolibarr application
     And I go to the Third Parties tab
     And I create a new third party
@@ -48,5 +48,5 @@ Feature: Data Sharing - Invoices
     Given I open my vTiger application
     And I go to the vTiger Invoices tab
     Then I should see the following Invoices in vTiger
-      | Invoice amount |
-      | 2,400.00       |
+      | Invoice number | Status  | Total amount |
+      | INV-001        | Created | 2,400.00     |

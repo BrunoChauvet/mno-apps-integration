@@ -58,7 +58,6 @@ Then(/^Connec should contain the Invoices$/) do |table|
   end
 end
 
-
 Then(/^Connec should contain only the Invoices$/) do |table|
   client = Connec::ClientV1.new
   invoices = client.invoices
