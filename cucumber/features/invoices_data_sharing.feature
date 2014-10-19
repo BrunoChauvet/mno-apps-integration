@@ -49,4 +49,4 @@ Feature: Data Sharing - Invoices
     And I go to the vTiger Invoices tab
     Then I should see the following Invoices in vTiger
       | Invoice number | Status  | Total amount |
-      | INV-001        | Created | 2,400.00     |
+      | INV-001        | Created | $2,400.00    |
