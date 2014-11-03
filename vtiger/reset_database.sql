@@ -4,6 +4,7 @@ DELETE FROM vtiger_accountscf;
 DELETE FROM vtiger_contactdetails;
 DELETE FROM vtiger_contactscf;
 DELETE FROM vtiger_producttaxrel;
+DELETE FROM vtiger_inventorytaxinfo;
 DELETE FROM vtiger_inventoryshippingrel;
 DELETE FROM vtiger_inventoryproductrel;
 DELETE FROM vtiger_inventorysubproductrel;

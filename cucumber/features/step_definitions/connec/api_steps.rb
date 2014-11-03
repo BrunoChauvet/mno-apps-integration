@@ -1,4 +1,7 @@
-require 'faraday'
+Given(/^Connec contains the Organizations$/) do |table|
+  client = Connec::ClientV1.new
+  client.add_organizations table.hashes
+end
 
 Then(/^Connec should contain the Organizations$/) do |table|
   client = Connec::ClientV1.new
@@ -13,6 +16,11 @@ Then(/^Connec should contain the Organizations$/) do |table|
   end
 end
 
+Given(/^Connec contains the Contacts$/) do |table|
+  client = Connec::ClientV1.new
+  client.add_people table.hashes
+end
+
 Then(/^Connec should contain the Contacts$/) do |table|
   client = Connec::ClientV1.new
   people = client.people
@@ -25,6 +33,11 @@ Then(/^Connec should contain the Contacts$/) do |table|
 
     raise "Person not found: #{row}" unless matching_contact
   end
+end
+
+Given(/^Connec contains the Accounts$/) do |table|
+  client = Connec::ClientV1.new
+  client.add_accounts table.hashes
 end
 
 Then(/^Connec should contain the Items$/) do |table|

@@ -50,3 +50,21 @@ Feature: Data Sharing - Invoices
     Then I should see the following Invoices in vTiger
       | Invoice number | Status  | Total amount |
       | INV-001        | Created | $2,400.00    |
+
+  Scenario: Push a new Invoice from Connec
+    Given Connec contains the Organizations
+      | I | Name            | Type                | Billing Address                          | Shipping Address                                    | Email                     | Website                    | Phone        |
+      | 1 | ABC Furnitures  | Supplier            | 21 High Street;Sydney;2000;NSW;Australia | 411 Elisabeth Street;Surry Hills;2010;NSW;Australia | contact@abcfurnitures.com | http://abcfurnitures.com   | 02 4367 0091 |
+      | 2 | Bay Side Bistro | Customer            | 22 High Street;Sydney;2000;NSW;Australia | 412 Elisabeth Street;Surry Hills;2010;NSW;Australia | contact@baysidebistro.com | http://baysidebistro.com   | 02 4367 0092 |
+      | 3 | Office National | Customer & Supplier | 23 High Street;Sydney;2000;NSW;Australia | 413 Elisabeth Street;Surry Hills;2010;NSW;Australia | contact@office.nation.com | http://office.national.com | 02 4367 0093 |
+    And Connec contains the Contacts
+      | Id | First Name | Last Name | Organziation Id |
+      | 1  | John       | Smith     | 1               |
+      | 2  | Jack       | Bauer     | 1               |
+      | 3  | Roger      | Johnson   | 2               |
+      | 4  | Belinda    | Smith     | 2               |
+      | 5  | Melissa    | Benson    | 3               |
+      | 6  | Lee        | Wong      | 3               |
+    And Connec contains the Accounts
+      | Id | Name    | Code | Description             | Currency | Classification | Type | Sub Type |
+      | 1  | Savings | 090  | Company savings account | AUD      | ASSET          | BANK | SAVINGS  |

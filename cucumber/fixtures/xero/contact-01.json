@@ -1,0 +1,58 @@
+{
+  "ContactID": "4f8dbc9b-889f-44d7-b263-d99f14ccf6f7",
+  "ContactStatus": "ACTIVE",
+  "Name": "24 Locks",
+  "FirstName": "Morris",
+  "LastName": "McKenzie",
+  "EmailAddress": "mm@pmwla.co",
+  "BankAccountDetails": "",
+  "Addresses": [
+    {
+      "AddressType": "STREET",
+      "City": "",
+      "Region": "",
+      "PostalCode": "",
+      "Country": ""
+    },
+    {
+      "AddressType": "POBOX",
+      "City": "",
+      "Region": "",
+      "PostalCode": "",
+      "Country": ""
+    }
+  ],
+  "Phones": [
+    {
+      "PhoneType": "DDI",
+      "PhoneNumber": "",
+      "PhoneAreaCode": "",
+      "PhoneCountryCode": ""
+    },
+    {
+      "PhoneType": "DEFAULT",
+      "PhoneNumber": "",
+      "PhoneAreaCode": "",
+      "PhoneCountryCode": ""
+    },
+    {
+      "PhoneType": "FAX",
+      "PhoneNumber": "",
+      "PhoneAreaCode": "",
+      "PhoneCountryCode": ""
+    },
+    {
+      "PhoneType": "MOBILE",
+      "PhoneNumber": "",
+      "PhoneAreaCode": "",
+      "PhoneCountryCode": ""
+    }
+  ],
+  "UpdatedDateUTC": "\/Date(1412316329783+1300)\/",
+  "ContactGroups": [],
+  "IsSupplier": false,
+  "IsCustomer": false,
+  "ContactPersons": [],
+  "HasAttachments": false,
+  "HasValidationErrors": false
+}
