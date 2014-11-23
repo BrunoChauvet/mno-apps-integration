@@ -8,3 +8,6 @@ DELETE FROM llx_product;
 DELETE FROM llx_product_price;
 DELETE FROM llx_bank;
 DELETE FROM llx_bank_account;
+DELETE FROM llx_c_tva WHERE rowid >= 2469;
+DELETE FROM llx_paiement;
+DELETE FROM llx_paiement_facture;

@@ -1,0 +1,5 @@
+[localhost]
+localhost
+
+[rpm-build-server]
+rpmbuilder-centos.apse1.uat.maestrano.io	ansible_connection=ssh	ansible_ssh_user=root ansible_ssh_private_key_file=/home/bruno/mno-keys/MaestranoUAT/global-dev-apse1.pem

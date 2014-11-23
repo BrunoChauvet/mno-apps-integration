@@ -13,3 +13,5 @@ DELETE FROM vtiger_products;
 DELETE FROM vtiger_productcf;
 DELETE FROM vtiger_invoice;
 DELETE FROM vtiger_invoicecf;
+DELETE FROM vtiger_salesorder;
+DELETE FROM vtiger_salesordercf;

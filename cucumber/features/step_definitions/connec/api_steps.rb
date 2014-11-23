@@ -1,3 +1,8 @@
+Given(/^Connec contains the Company$/) do |table|
+  client = Connec::ClientV1.new
+  client.set_company table.hashes.first
+end
+
 Given(/^Connec contains the Organizations$/) do |table|
   client = Connec::ClientV1.new
   client.add_organizations table.hashes
@@ -40,6 +45,49 @@ Given(/^Connec contains the Accounts$/) do |table|
   client.add_accounts table.hashes
 end
 
+Then(/^Connec should contain the Accounts$/) do |table|
+  client = Connec::ClientV1.new
+  accounts = client.accounts
+
+  table.hashes.each do |row|
+    matching_account = accounts.select do |account|
+      account['name'] == row['Name']
+      account['code'] == row['Code']
+      account['description'] == row['Description']
+      account['currency'] == row['Currency']
+      account['classification'] == row['Classification']
+      account['type'] == row['Type']
+      account['subType'] == row['SubType']
+    end
+
+    raise "Account not found: #{row}" unless matching_account
+  end
+end
+
+Given(/^Connec contains the Tax Codes$/) do |table|
+  client = Connec::ClientV1.new
+  client.add_tax_codes table.hashes
+end
+
+Then(/^Connec should contain the Tax Codes$/) do |table|
+  client = Connec::ClientV1.new
+  tax_codes = client.tax_codes
+
+  table.hashes.each do |row|
+    matching_tax_code = tax_codes.select do |item|
+      item['name'] == row['Tax Code name']
+      item['description'] == row['Tax Code description']
+    end
+
+    raise "Tax Code not found: #{row}" unless matching_tax_code
+  end
+end
+
+Given(/^Connec contains the Items$/) do |table|
+  client = Connec::ClientV1.new
+  client.add_items table.hashes
+end
+
 Then(/^Connec should contain the Items$/) do |table|
   client = Connec::ClientV1.new
   items = client.items
@@ -53,6 +101,17 @@ Then(/^Connec should contain the Items$/) do |table|
     raise "Item not found: #{row}" unless matching_item
   end
 end
+
+Given(/^Connec contains the Invoices$/) do |table|
+  client = Connec::ClientV1.new
+  client.add_invoices table.hashes
+end
+
+Given(/^Connec Invoice "(.*?)" contains the Invoice Lines$/) do |invoice_id, table|
+  client = Connec::ClientV1.new
+  client.add_invoice_lines(invoice_id, table.hashes)
+end
+
 
 Then(/^Connec should contain the Invoices$/) do |table|
   client = Connec::ClientV1.new

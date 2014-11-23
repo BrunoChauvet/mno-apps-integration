@@ -1,0 +1,5 @@
+- name: Tag Application
+  hosts: localhost
+
+  tasks:
+  - command: chdir=/home/bruno/Workspace/vtigercrm

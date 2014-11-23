@@ -6,3 +6,6 @@ DELETE FROM si_invoices;
 DELETE FROM si_customers;
 DELETE FROM si_products;
 DELETE FROM si_payment;
+DELETE FROM si_biller;
+DELETE FROM si_tax;
+DELETE FROM si_payment;

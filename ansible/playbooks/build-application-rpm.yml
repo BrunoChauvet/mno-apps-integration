@@ -1,0 +1,6 @@
+- name: Build Application RPM
+  hosts: rpm-build-server
+
+  tasks:
+  - name: Copy script template 
+    action: template src=../templates/etc-mysql-my-cnf.j2 dest=/etc/mysql/my.cnf owner=root mode=0600
