@@ -3,7 +3,7 @@ require 'faraday'
 module Connec
   class ClientV1
     DOLIBAR_GROUP_ID = 'dolibarr.app.dev.maestrano.io'
-    XERO_GROUP_ID    = 'cld-9prf'
+    XERO_GROUP_ID    = 'sugarcrm.app.dev.maestrano.io'
 
     def client
       @client ||= Faraday.new(:url => 'http://connec.maestrano.io')
