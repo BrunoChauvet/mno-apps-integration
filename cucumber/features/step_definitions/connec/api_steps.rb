@@ -146,3 +146,35 @@ Then(/^Connec should contain only the Invoices$/) do |table|
 
   table.diff! actual_invoices
 end
+
+Given(/^Connec contains the Employees$/) do |table|
+  client = Connec::ClientV1.new
+  client.add_employees table.hashes
+end
+
+Then(/^Connec should contain the Employees$/) do |table|
+  client = Connec::ClientV1.new
+  employees = client.employees
+
+  table.hashes.each do |row|
+    matching_employee = employees.select do |employee|
+      employee['name']['givenNames'] == row['First name']
+      employee['name']['familyName'] == row['Last name']
+      employee['employeeId'] == row['Employee ID']
+
+      employee['contacts']['address']['postalAddress']['streetAddress'] == row['Address Street 1']
+      employee['contacts']['address']['postalAddress']['streetAddress2'] == row['Address Street 2']
+      employee['contacts']['address']['postalAddress']['locality'] == row['City']
+      employee['contacts']['address']['postalAddress']['region'] == row['State']
+      employee['contacts']['address']['postalAddress']['country'] == row['Country']
+
+      employee['contacts']['email']['address'] == row['Work Email']
+      employee['contacts']['email']['address2'] == row['Other Email']
+
+      employee['contacts']['telephone']['voice'] == row['Home Telephone']
+      employee['contacts']['telephone']['voice2'] == row['Work Telephone']
+      employee['contacts']['telephone']['mobile'] == row['Mobile']
+    end
+    raise "Employee not found: #{row}" unless matching_employee
+  end
+end

@@ -16,7 +16,7 @@ Feature: Data Sharing - Invoices Australian configuration
       | 2  | Bay Side Bistro | Customer            | 22 High Street;Sydney;2000;NSW;Australia | 412 Elisabeth Street;Surry Hills;2010;NSW;Australia | contact@baysidebistro.com | http://baysidebistro.com   | 02 4367 0092 |
       | 3  | Office National | Customer & Supplier | 23 High Street;Sydney;2000;NSW;Australia | 413 Elisabeth Street;Surry Hills;2010;NSW;Australia | contact@office.nation.com | http://office.national.com | 02 4367 0093 |
     And Connec contains the Contacts
-      | Id | First Name | Last Name | Organziation Id |
+      | Id | First name | Last name | Organziation Id |
       | 1  | John       | Smith     | 1               |
       | 2  | Jack       | Bauer     | 1               |
       | 3  | Roger      | Johnson   | 2               |

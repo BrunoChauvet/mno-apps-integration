@@ -118,7 +118,7 @@ module Connec
       hashes.each do |row|
         data = {}
         data['id'] = row['Id'] if row['Id']
-        data['name'] = {'givenNames' => row['First Name'], 'familyName' => row['Last Name']}
+        data['name'] = {'givenNames' => row['First name'], 'familyName' => row['Last name']}
         data['role'] = {'organization' => {'id' => row['Organziation Id']}} if row['Organziation Id']
 
         response = client.post do |request|
@@ -278,6 +278,29 @@ module Connec
         request.headers['MNO-TRUSTED'] = 'true'
       end
       JSON.parse(response.body)
+    end
+
+    def employees
+      response = client.get "/v1/#{DOLIBAR_GROUP_ID}/employees" do |request|
+        request.headers['MNO-TRUSTED'] = 'true'
+      end
+      JSON.parse(response.body)
+    end
+
+    def add_employees(hashes)
+      hashes.each do |row|
+        data = {}
+        data['id'] = row['Id'] if row['Id']
+        data['name'] = {'givenNames' => row['First name'], 'familyName' => row['Last name']}
+        data['employeeId'] = row['Employee ID'] if row['Employee ID']
+
+        response = client.post do |request|
+          request.url "/v1/#{XERO_GROUP_ID}/employees"
+          request.headers['MNO-TRUSTED'] = 'true'
+          request.headers['Content-Type'] = 'application/json'
+          request.body = data.to_json
+        end
+      end
     end
   end
 end
