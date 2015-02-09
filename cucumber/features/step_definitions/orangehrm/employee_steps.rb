@@ -26,9 +26,9 @@ When(/^I update the employee personal details to$/) do |table|
   page.find('#btnSave').click
 
   table.hashes.each do |row|
-    fill_in 'firstName', :with => row['First name']
-    fill_in 'lastName', :with => row['Last name']
-    fill_in 'employeeId', :with => row['Employee ID']
+    fill_in 'personal_txtEmpFirstName', :with => row['First name']
+    fill_in 'personal_txtEmpLastName', :with => row['Last name']
+    fill_in 'personal_txtEmployeeId', :with => row['Employee ID']
     fill_in 'personal_txtNICNo', :with => row['SSN Number']
     page.find('#personal_optGender_1').click if row['Gender'] == 'Male'
     page.find('#personal_optGender_2').click if row['Gender'] == 'Female'
