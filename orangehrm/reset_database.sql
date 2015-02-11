@@ -6,3 +6,5 @@ DELETE FROM ohrm_location;
 DELETE FROM ohrm_customer;
 DELETE FROM ohrm_project;
 DELETE FROM ohrm_project_activity;
+DELETE FROM ohrm_timesheet;
+DELETE FROM ohrm_timesheet_item;
