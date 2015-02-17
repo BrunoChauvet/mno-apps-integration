@@ -5,3 +5,4 @@ mysql vtiger -uvtiger -pvtiger < ../vtiger/reset_database.sql
 mysql sugarcrm -usugarcrm -psugarcrm < ../sugarcrm/reset_database.sql
 mysql limesurvey -ulimesurvey -plimesurvey < ../limesurvey/reset_database.sql
 mysql orangehrm -uorangehrm -porangehrm < ../orangehrm/reset_database.sql
+mysql timetrex -utimetrex -ptimetrex < ../timetrex/reset_database.sql

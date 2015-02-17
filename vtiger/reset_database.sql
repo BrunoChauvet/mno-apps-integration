@@ -16,5 +16,7 @@ DELETE FROM vtiger_invoice;
 DELETE FROM vtiger_invoicecf;
 DELETE FROM vtiger_salesorder;
 DELETE FROM vtiger_salesordercf;
+DELETE FROM vtiger_event;
+DELETE FROM vtiger_tickets;
 DELETE FROM vtiger_crmentity WHERE crmid >= 125;
 DELETE FROM vtiger_users WHERE id > 1;
