@@ -8,3 +8,5 @@ DELETE FROM ohrm_project;
 DELETE FROM ohrm_project_activity;
 DELETE FROM ohrm_timesheet;
 DELETE FROM ohrm_timesheet_item;
+DELETE FROM ohrm_leave_type;
+DELETE FROM hs_hr_emp_basicsalary;

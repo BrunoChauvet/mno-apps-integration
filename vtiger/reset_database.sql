@@ -20,3 +20,6 @@ DELETE FROM vtiger_event;
 DELETE FROM vtiger_tickets;
 DELETE FROM vtiger_crmentity WHERE crmid >= 125;
 DELETE FROM vtiger_users WHERE id > 1;
+DELETE FROM vtiger_crmentityrel;
+DELETE FROM vtiger_senotesrel;
+DELETE FROM vtiger_notes;
