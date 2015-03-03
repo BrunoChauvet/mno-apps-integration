@@ -1,9 +1,9 @@
-Given(/^I go to the Employee List tab$/) do
+Given(/^I go to the Employee List tab in OrangeHRM$/) do
   page.find('#menu_pim_viewPimModule').click
   page.find('#menu_pim_viewEmployeeList').click
 end
 
-Given(/^I create a new employee$/) do |table|
+Given(/^I create a new employee in OrangeHRM$/) do |table|
   page.find('#btnAdd').click
 
   table.hashes.each do |row|
@@ -15,13 +15,13 @@ Given(/^I create a new employee$/) do |table|
   page.find('#btnSave').click
 end
 
-When(/^I edit the Employee "(.*?)"$/) do |employee_id|
+When(/^I edit the Employee "(.*?)" in OrangeHRM$/) do |employee_id|
   page.find('#menu_pim_viewPimModule').click
   page.find('#menu_pim_viewEmployeeList').click
   click_link employee_id
 end
 
-When(/^I update the employee personal details to$/) do |table|
+When(/^I update the employee personal details in OrangeHRM to$/) do |table|
   click_link 'Personal Details'
   page.find('#btnSave').click
 
@@ -38,7 +38,7 @@ When(/^I update the employee personal details to$/) do |table|
   page.find('#btnSave').click
 end
 
-Then(/^I update the employee contact details to$/) do |table|
+Then(/^I update the employee contact details in OrangeHRM to$/) do |table|
   click_link 'Contact Details'
   page.find('#btnSave').click
 

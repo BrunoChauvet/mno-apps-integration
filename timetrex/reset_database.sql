@@ -8,3 +8,5 @@ DELETE FROM branch;
 DELETE FROM user_wage;
 DELETE FROM punch_control;
 DELETE FROM punch;
+DELETE FROM pay_period_schedule;
+DELETE FROM pay_period;
