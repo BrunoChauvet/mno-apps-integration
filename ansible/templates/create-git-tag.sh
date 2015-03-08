@@ -19,13 +19,15 @@ else
   fi
 fi
 
+remote='origin'
+
 # Delete tag
 echo "Executing: git tag -d $latest_tag"
 git tag -d $latest_tag
 
 # Push to repository
-echo "Executing: git push origin :refs/tags/$latest_tag"
-git push origin :refs/tags/$latest_tag
+echo "Executing: git push ${remote} :refs/tags/$latest_tag"
+git push ${remote} :refs/tags/$latest_tag
 
 # Recreate tag
 echo "Executing: git tag -a $latest_tag -m $latest_tag"
@@ -33,4 +35,4 @@ git tag -a $latest_tag -m $latest_tag
 
 # Push new tag to repository
 echo "Executing: git push --tags"
-git push --tags
+git push --tags ${remote}
