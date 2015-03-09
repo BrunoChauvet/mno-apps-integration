@@ -2,12 +2,20 @@ require 'faraday'
 
 module Connec
   class ClientV1
-    DOLIBAR_GROUP_ID = 'dolibarr.app.dev.maestrano.io'
-    XERO_GROUP_ID    = 'sugarcrm.app.dev.maestrano.io'
+    CHANNEL_ID        = 'org-fbx7'
+    DOLIBAR_GROUP_ID  = 'dolibarr.app.dev.maestrano.io'
+    SUGARCRM_GROUP_ID = 'sugarcrm.app.dev.maestrano.io'
 
     def client
-      @client ||= Faraday.new(:url => 'http://connec.maestrano.io')
-      @client
+      @client ||= Faraday.new(:url => 'http://connec.maestrano.io') do |conn|
+        conn.request :basic_auth, '7877468b-aaeb-4129-a9c7-4711b2d32337', '87643da1-5386-4332-b4f0-2e474b8248f3'
+        conn.adapter :net_http
+      end
+    end
+
+    def companies
+      response = client.get "/api/v1/admin/#{CHANNEL_ID}/companies"
+      JSON.parse(response.body)['Companies']
     end
 
     def set_company(row)
@@ -48,7 +56,7 @@ module Connec
       data['contacts']['website'] = {'url' => row['Website']} if row['Website']
 
       response = client.post do |request|
-        request.url "/v1/#{XERO_GROUP_ID}/company"
+        request.url "/v1/#{SUGARCRM_GROUP_ID}/company"
         request.headers['MNO-TRUSTED'] = 'true'
         request.headers['Content-Type'] = 'application/json'
         request.body = {'company'=>data}.to_json
@@ -56,10 +64,8 @@ module Connec
     end
 
     def organizations
-      response = client.get "/v1/#{DOLIBAR_GROUP_ID}/organizations" do |request|
-        request.headers['MNO-TRUSTED'] = 'true'
-      end
-      JSON.parse(response.body)
+      response = client.get "/api/v1/admin/#{CHANNEL_ID}/organizations"
+      JSON.parse(response.body)['Organizations']
     end
 
     def add_organizations(hashes)
@@ -99,7 +105,7 @@ module Connec
         data['contacts']['website'] = {'url' => row['Website']} if row['Website']
 
         response = client.post do |request|
-          request.url "/v1/#{XERO_GROUP_ID}/organizations"
+          request.url "/v1/#{SUGARCRM_GROUP_ID}/organizations"
           request.headers['MNO-TRUSTED'] = 'true'
           request.headers['Content-Type'] = 'application/json'
           request.body = data.to_json
@@ -108,10 +114,8 @@ module Connec
     end
 
     def people
-      response = client.get "/v1/#{DOLIBAR_GROUP_ID}/persons" do |request|
-        request.headers['MNO-TRUSTED'] = 'true'
-      end
-      JSON.parse(response.body)
+      response = client.get "/api/v1/admin/#{CHANNEL_ID}/persons"
+      JSON.parse(response.body)['People']
     end
 
     def add_people(hashes)
@@ -122,7 +126,7 @@ module Connec
         data['role'] = {'organization' => {'id' => row['Organziation Id']}} if row['Organziation Id']
 
         response = client.post do |request|
-          request.url "/v1/#{XERO_GROUP_ID}/persons"
+          request.url "/v1/#{SUGARCRM_GROUP_ID}/persons"
           request.headers['MNO-TRUSTED'] = 'true'
           request.headers['Content-Type'] = 'application/json'
           request.body = data.to_json
@@ -131,10 +135,8 @@ module Connec
     end
 
     def accounts
-      response = client.get "/v1/#{DOLIBAR_GROUP_ID}/accounts" do |request|
-        request.headers['MNO-TRUSTED'] = 'true'
-      end
-      JSON.parse(response.body)
+      response = client.get "/api/v1/admin/#{CHANNEL_ID}/accounts"
+      JSON.parse(response.body)['Accounts']
     end
 
     def add_accounts(hashes)
@@ -150,7 +152,7 @@ module Connec
         data['subType'] = row['Sub Type'] if row['Sub Type']
 
         response = client.post do |request|
-          request.url "/v1/#{XERO_GROUP_ID}/accounts"
+          request.url "/v1/#{SUGARCRM_GROUP_ID}/accounts"
           request.headers['MNO-TRUSTED'] = 'true'
           request.headers['Content-Type'] = 'application/json'
           request.body = data.to_json
@@ -159,10 +161,8 @@ module Connec
     end
 
     def tax_codes
-      response = client.get "/v1/#{DOLIBAR_GROUP_ID}/tax_codes" do |request|
-        request.headers['MNO-TRUSTED'] = 'true'
-      end
-      JSON.parse(response.body)
+      response = client.get "/api/v1/admin/#{CHANNEL_ID}/tax_codes"
+      JSON.parse(response.body)['TaxCodes']
     end
 
     def add_tax_codes(hashes)
@@ -177,7 +177,7 @@ module Connec
         data['purchaseTaxes'] = {'name'=>row['Purchase Tax Component Name'], 'rate'=>row['Purchase Tax Component Rate']} if row['Purchase Tax Component Name']
 
         response = client.post do |request|
-          request.url "/v1/#{XERO_GROUP_ID}/tax_codes"
+          request.url "/v1/#{SUGARCRM_GROUP_ID}/tax_codes"
           request.headers['MNO-TRUSTED'] = 'true'
           request.headers['Content-Type'] = 'application/json'
           request.body = data.to_json
@@ -186,10 +186,8 @@ module Connec
     end
 
     def items
-      response = client.get "/v1/#{DOLIBAR_GROUP_ID}/items" do |request|
-        request.headers['MNO-TRUSTED'] = 'true'
-      end
-      JSON.parse(response.body)
+      response = client.get "/api/v1/admin/#{CHANNEL_ID}/items"
+      JSON.parse(response.body)['Items']
     end
 
     def add_items(hashes)
@@ -209,7 +207,7 @@ module Connec
         data['saleTaxCode'] = {'id' => row['Sale Tax Code Id']}
 
         response = client.post do |request|
-          request.url "/v1/#{XERO_GROUP_ID}/items"
+          request.url "/v1/#{SUGARCRM_GROUP_ID}/items"
           request.headers['MNO-TRUSTED'] = 'true'
           request.headers['Content-Type'] = 'application/json'
           request.body = data.to_json
@@ -218,10 +216,8 @@ module Connec
     end
 
     def invoices
-      response = client.get "/v1/#{DOLIBAR_GROUP_ID}/invoices" do |request|
-        request.headers['MNO-TRUSTED'] = 'true'
-      end
-      JSON.parse(response.body)
+      response = client.get "/api/v1/admin/#{CHANNEL_ID}/invoices"
+      JSON.parse(response.body)['Invoices']
     end
 
     def add_invoices(hashes)
@@ -240,7 +236,7 @@ module Connec
         data['organization'] = {'id'=>row['Customer Id']} if row['Customer Id']
 
         response = client.post do |request|
-          request.url "/v1/#{XERO_GROUP_ID}/invoices"
+          request.url "/v1/#{SUGARCRM_GROUP_ID}/invoices"
           request.headers['MNO-TRUSTED'] = 'true'
           request.headers['Content-Type'] = 'application/json'
           request.body = data.to_json
@@ -266,7 +262,7 @@ module Connec
       end
 
       response = client.post do |request|
-        request.url "/v1/#{XERO_GROUP_ID}/invoices"
+        request.url "/v1/#{SUGARCRM_GROUP_ID}/invoices"
         request.headers['MNO-TRUSTED'] = 'true'
         request.headers['Content-Type'] = 'application/json'
         request.body = data.to_json
@@ -274,17 +270,13 @@ module Connec
     end
 
     def payments
-      response = client.get "/v1/#{DOLIBAR_GROUP_ID}/payments" do |request|
-        request.headers['MNO-TRUSTED'] = 'true'
-      end
-      JSON.parse(response.body)
+      response = client.get "/api/v1/admin/#{CHANNEL_ID}/payments"
+      JSON.parse(response.body)['Payments']
     end
 
     def employees
-      response = client.get "/v1/#{DOLIBAR_GROUP_ID}/employees" do |request|
-        request.headers['MNO-TRUSTED'] = 'true'
-      end
-      JSON.parse(response.body)
+      response = client.get "/api/v1/admin/#{CHANNEL_ID}/employees"
+      JSON.parse(response.body)['Employees']
     end
 
     def add_employees(hashes)
@@ -295,7 +287,7 @@ module Connec
         data['employeeId'] = row['Employee ID'] if row['Employee ID']
 
         response = client.post do |request|
-          request.url "/v1/#{XERO_GROUP_ID}/employees"
+          request.url "/v1/#{SUGARCRM_GROUP_ID}/employees"
           request.headers['MNO-TRUSTED'] = 'true'
           request.headers['Content-Type'] = 'application/json'
           request.body = data.to_json
