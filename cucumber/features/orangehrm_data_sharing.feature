@@ -39,3 +39,24 @@ Feature: OrangeHRM data ashring
     Then Connec should contain the Employees
       | Employee ID | Address Street 1 | Address Street 2 | City        | State | Postal Code | Country | Home Telephone | Mobile       | Work Telephone | Work Email       | Other Email         |
       | EM034       | 410 Elisabeth St | Suite 102        | Surry Hills | NSW   | 2010        | AU      | 12 4578 4512   | 04 7889 5623 | 02 4569 3214   | info@company.com | contact@company.com |
+
+  Scenario: Add an Employee TimeSheet in OrangeHRM
+    Given I open my OrangeHRM application
+    And I go to the Employee List tab in OrangeHRM
+    And I create a new employee in OrangeHRM
+      | First name      | Last name          | Employee ID |
+      | John            | Red                | EM034       |
+    And I go to the Customer List tab in OrangeHRM
+    And I create a new customer in OrangeHRM
+      | Name            | Description        |
+      | Doe Corp        | Doe Corp ltd.      |
+    And I go to the Project List tab in OrangeHRM
+    And I create a new Project in OrangeHRM
+      | Customer | Name            | Description                |
+      | Doe Corp | Build a house   | Build a house for Doe Corp |
+    And I create a new Project Activity in OrangeHRM
+      | Name          |
+      | Build Phase 1 |
+    And I view the TimeSheets for Employee "John Red" in OrangeHRM
+    And I a TimeSheet for "2015-01-01" this Employee in OrangeHRM
+    And I edit the current TimeSheet in OrangeHRM
