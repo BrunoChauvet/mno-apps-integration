@@ -16,6 +16,7 @@ INSERT INTO vtiger_inventorytaxinfo_seq (id) VALUES (1);
 DELETE FROM vtiger_inventoryshippingrel;
 DELETE FROM vtiger_inventorysubproductrel;
 DELETE FROM vtiger_invoicebillads;
+DELETE FROM vtiger_invoiceshipads;
 DELETE FROM vtiger_products;
 DELETE FROM vtiger_productcf;
 DELETE FROM vtiger_service;
@@ -32,7 +33,15 @@ DELETE FROM vtiger_crmentityrel;
 DELETE FROM vtiger_senotesrel;
 DELETE FROM vtiger_notes;
 DELETE FROM vtiger_vendor;
+DELETE FROM vtiger_vendorcf;
+DELETE FROM vtiger_picklist WHERE picklistid IN (SELECT picklist_valueid FROM vtiger_glacct);
+DELETE FROM vtiger_role2picklist WHERE picklistid IN (SELECT picklistid FROM vtiger_picklist WHERE name='glacct');
 DELETE FROM vtiger_glacct;
+DELETE FROM vtiger_field WHERE tablename='vtiger_inventoryproductrel' AND columnname LIKE 'tax%';
+DELETE FROM vtiger_purchaseorder;
+DELETE FROM vtiger_purchaseordercf;
+DELETE FROM vtiger_pobillads;
+DELETE FROM vtiger_poshipads;
 
 DROP TABLE IF EXISTS `vtiger_inventoryproductrel`;
 CREATE TABLE `vtiger_inventoryproductrel` (
@@ -47,9 +56,6 @@ CREATE TABLE `vtiger_inventoryproductrel` (
   `description` text,
   `incrementondel` int(11) NOT NULL DEFAULT '0',
   `lineitem_id` int(11) NOT NULL AUTO_INCREMENT,
-  `tax1` decimal(7,3) DEFAULT NULL,
-  `tax2` decimal(7,3) DEFAULT NULL,
-  `tax3` decimal(7,3) DEFAULT NULL,
   PRIMARY KEY (`lineitem_id`),
   KEY `inventoryproductrel_id_idx` (`id`),
   KEY `inventoryproductrel_productid_idx` (`productid`)
