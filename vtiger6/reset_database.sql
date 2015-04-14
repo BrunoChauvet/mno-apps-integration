@@ -42,6 +42,7 @@ DELETE FROM vtiger_purchaseorder;
 DELETE FROM vtiger_purchaseordercf;
 DELETE FROM vtiger_pobillads;
 DELETE FROM vtiger_poshipads;
+DELETE FROM vtiger_currency_info;
 
 DROP TABLE IF EXISTS `vtiger_inventoryproductrel`;
 CREATE TABLE `vtiger_inventoryproductrel` (
