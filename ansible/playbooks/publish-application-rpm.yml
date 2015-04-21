@@ -1,5 +1,5 @@
 - name: Set Application RPM rights
-  hosts: rpm-repository-uat
+  hosts: rpm-repository-uat:rpm-repository-production
 
   tasks:
   - name: Find file
