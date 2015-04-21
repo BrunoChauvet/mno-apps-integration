@@ -4,9 +4,17 @@
 # - checkout the branch you want to tag from
 # - run script from project home directory
 
+remote='origin'
+git pull ${remote} mno-master
+
+# Fetch repository
+git remote update
+
+# Fetch last tag
 if [ "$#" -ne 1 ]; then
   # No tag specified, get the last project tag
   latest_tag=( `git tag -l | tail -n 1` )
+  echo "Recreating tag ${latest_tag}"
 else
   # Check if we are creatign a new tag or overwritting an existing one
   latest_tag=$1
@@ -18,8 +26,6 @@ else
     echo "Creating a new tag"
   fi
 fi
-
-remote='origin'
 
 # Delete tag
 echo "Executing: git tag -d $latest_tag"

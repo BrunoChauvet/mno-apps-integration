@@ -2,5 +2,26 @@
   hosts: rpm-build-server
 
   tasks:
-  - name: Copy script template 
-    action: template src=../templates/etc-mysql-my-cnf.j2 dest=/etc/mysql/my.cnf owner=root mode=0600
+  - name: Copy script to build application RPM
+    action: template src=../templates/build-application-rpm.sh dest=/home/rpmbuilder/build-application-rpm.sh owner=rpmbuilder mode=0755
+
+  - name: Build the application RPM
+    command: chdir=/home/rpmbuilder ./build-application-rpm.sh
+    sudo: true
+    sudo_user: rpmbuilder
+
+  - name: Move build application rpm for publishing
+    shell: mv /home/rpmbuilder/repo-tmp-apps/{{application}}*.rpm /home/rpmbuilder/repo-apps/
+
+  - name: Push rpm to yum repository
+    shell: /home/rpmbuilder/scripts/apps-push-all uat
+    sudo: true
+    sudo_user: rpmbuilder
+
+  - name: Push rpm to yum repository
+    shell: /home/rpmbuilder/scripts/apps-repo-refresh uat
+    sudo: true
+    sudo_user: rpmbuilder
+
+  - name: Remove script
+    file: path=/home/rpmbuilder/build-application-rpm.sh state=absent

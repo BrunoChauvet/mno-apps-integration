@@ -1,0 +1,14 @@
+- name: Set Application RPM rights
+  hosts: rpm-repository-uat
+
+  tasks:
+  - name: Find file
+    shell: ls /data/yumrepo/centos/6/apps/x86_64/{{application}}*.rpm
+    register: file_path
+    sudo: true
+    sudo_user: root
+
+  - name: Fix application rpm permissions
+    file: path={{file_path.stdout}} owner=rpmbuilder group=yum-admins mode=0755
+    sudo: true
+    sudo_user: root

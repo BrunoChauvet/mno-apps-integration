@@ -2,4 +2,11 @@
   hosts: localhost
 
   tasks:
-  - command: chdir=/home/bruno/Workspace/vtigercrm
+  - name: Copy script to tag an application
+    action: template src=../templates/create-git-tag.sh dest=/home/bruno/Workspace/vtiger6/create-git-tag.sh owner=bruno mode=0755
+
+  - name: Recreate the last tag of the application
+    command: chdir=/home/bruno/Workspace/vtiger6 ./create-git-tag.sh
+
+  - name: Remove script
+    file: path=/home/bruno/Workspace/vtiger6/create-git-tag.sh state=absent
