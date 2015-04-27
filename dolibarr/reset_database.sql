@@ -3,6 +3,8 @@ DELETE FROM llx_paiement_facture;
 DELETE FROM llx_facturedet;
 DELETE FROM llx_facture;
 DELETE FROM llx_socpeople;
+DELETE FROM llx_facture_fourn_det;
+DELETE FROM llx_facture_fourn;
 DELETE FROM llx_societe;
 DELETE FROM llx_product_price;
 DELETE FROM llx_product_fournisseur_price;
