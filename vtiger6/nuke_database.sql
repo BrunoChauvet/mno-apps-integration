@@ -1,0 +1,2 @@
+DROP SCHEMA vtiger6;
+CREATE SCHEMA vtiger6;
