@@ -3,8 +3,13 @@
 # Reset database
 mysql vtiger6 -uvtiger6 -pvtiger6 < nuke_database.sql
 
-# Run vTiger6 installation script
 cd ../../vtiger6
+
+# Delete installed modules
+rm -rf modules/EventManagement
+rm -rf modules/EventTicket
+
+# Run vTiger6 installation script
 php migrate.php
 
 # Apply MNO patch
