@@ -47,6 +47,10 @@ DELETE FROM vtiger_quotescf;
 DELETE FROM vtiger_quotesbillads;
 DELETE FROM vtiger_quotesshipads;
 DELETE FROM vtiger_currency_info;
+DELETE FROM vtiger_eventmanagement;
+DELETE FROM vtiger_eventmanagementcf;
+DELETE FROM vtiger_eventticket;
+DELETE FROM vtiger_eventticketcf;
 
 DROP TABLE IF EXISTS `vtiger_inventoryproductrel`;
 CREATE TABLE `vtiger_inventoryproductrel` (

@@ -15,6 +15,8 @@ DELETE FROM llx_propal;
 DELETE FROM llx_societe;
 DELETE FROM llx_product_price;
 DELETE FROM llx_product_fournisseur_price;
+DELETE FROM llx_product_stock;
+DELETE FROM llx_entrepot;
 DELETE FROM llx_product;
 DELETE FROM llx_bank;
 DELETE FROM llx_bank_account;
