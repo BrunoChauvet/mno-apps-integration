@@ -2,7 +2,7 @@
 
 # Reset database
 mysql vtiger6 -uvtiger6 -pvtiger6 < nuke_database.sql
-mysql vtiger6 -uvtiger6 -pvtiger6 < /home/bruno/vtigercrm6_scdl_20150520.sql
+mysql vtiger6 -uvtiger6 -pvtiger6 < /home/bruno/vtigercrm6_20150611.sql
 mysql vtiger6 -uvtiger6 -pvtiger6 < cleanup.sql
 
 cd ../../vtiger6
